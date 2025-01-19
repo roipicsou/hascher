@@ -13,10 +13,9 @@ def index():
 def action1():
     chemin = "/media/root/disque_dure1/"
     if os.path.isdir(chemin):
-        print("Le desier existe")
+        result = "Le desier existe"
     else:
-        print("Le doiser n'existe pas")
-    result = "Action 1 exécutée !"
+        result = "Le doiser n'existe pas"
     return render_template('result.html', result=result)
 
 # Route pour rediriger vers une page avec des paramètres
