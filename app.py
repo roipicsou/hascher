@@ -2,6 +2,15 @@ from flask import Flask, render_template, request, redirect, url_for
 import os
 
 app = Flask(__name__)
+chemin = "/media/root/disque_dure1/"
+
+def liste_dosier(dossier) :
+    fichiers = os.listdir(dossier)
+    
+    # Filtrer uniquement les fichiers (exclure les répertoires)
+    fichiers = [fichier for fichier in fichiers if os.path.isfile(os.path.join(dossier, fichier))]
+    
+    return fichiers
 
 # Page principale
 @app.route('/')
@@ -11,7 +20,6 @@ def index():
 # Route pour exécuter une fonction directement
 @app.route('/action1')
 def action1():
-    chemin = "/media/root/disque_dure1/"
     if os.path.isdir(chemin):
         result = "Le desier existe"
     else:
@@ -28,7 +36,7 @@ def parameters():
 def process_parameters():
     param1 = request.form.get('param1')
     param2 = request.form.get('param2')
-    result = f"Paramètres reçus : {param1}, {param2}"
+    result = liste_dosier(chemin)
     return render_template('result.html', result=result)
 
 if __name__ == '__main__':

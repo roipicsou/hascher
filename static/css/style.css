@@ -80,3 +80,43 @@ form button {
     width: 80%;
     max-width: 400px;
 }
+
+/* Style de base du select */
+select {
+    width: 100%; /* S'adapte à la largeur de son conteneur */
+    padding: 10px;
+    border-radius: 5px; /* Coins arrondis */
+    border: 1px solid #ccc; /* Bordure claire */
+    background-color: #f9f9f9; /* Couleur de fond claire */
+    font-size: 16px;
+    color: #333; /* Texte sombre */
+    transition: all 0.3s ease; /* Transition fluide pour les interactions */
+  }
+  
+  /* Style au survol du select */
+  select:hover {
+    border-color: #777; /* Bordure plus foncée au survol */
+    background-color: #e9e9e9; /* Fond plus sombre au survol */
+  }
+  
+  /* Style pour focus (lorsque l'élément est sélectionné) */
+  select:focus {
+    outline: none; /* Retirer le contour par défaut */
+    border-color: #0056b3; /* Bordure bleue */
+    background-color: #fff; /* Fond blanc */
+  }
+  
+  /* Style des options dans le select */
+  option {
+    padding: 10px; /* Espacement interne des options */
+    background-color: #fff; /* Fond blanc */
+    color: #333; /* Texte sombre */
+    border: none; /* Pas de bordure */
+  }
+  
+  /* Style au survol des options */
+  option:hover {
+    background-color: #f1f1f1; /* Fond clair au survol des options */
+    color: #000; /* Texte noir */
+  }
+  
