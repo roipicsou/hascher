@@ -8,7 +8,7 @@ def liste_dosier(dossier) :
     fichiers = os.listdir(dossier)
     
     # Filtrer uniquement les fichiers (exclure les répertoires)
-    fichiers = [fichier for fichier in fichiers if os.path.isfile(os.path.join(dossier, fichier))]
+    fichiers = [os.path.join(dossier, fichier) for fichier in fichiers if os.path.isfile(os.path.join(dossier, fichier))]
     
     return fichiers
 
