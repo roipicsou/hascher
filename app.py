@@ -16,10 +16,10 @@ def liste_dosier(dossier) :
 def get_mdp(mdp) :
     with open("/media/root/disque_dure/bob.txt", "r") as fichier:
         hash1 = fichier.read()
-    hash1.strip()
     print(hash1)
-    print(sha256(mdp.encode('utf-8')).hexdigest())
-    if sha256(mdp.encode('utf-8')).hexdigest() == hash1 :
+    moddepasse = sha256(mdp.encode('utf-8')).hexdigest() + "\n"
+    print()
+    if moddepasse == hash1 :
         return True
     else :
         return False
