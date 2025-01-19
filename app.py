@@ -16,13 +16,16 @@ def liste_dosier(dossier) :
 def get_mdp(mdp) :
     with open("/media/root/disque_dure/bob.txt", "r") as fichier:
         hash1 = fichier.read()
-    print(hash1)
     moddepasse = sha256(mdp.encode('utf-8')).hexdigest() + "\n"
     print()
     if moddepasse == hash1 :
         return True
     else :
         return False
+
+def chiffrer(chemin, mdp) :
+    os.system(f"gpg --batch --yes --passphrase {mdp}  --symmetric {chemin}")
+    os.system(f"rm {chemin}")
 
 # Page principale
 @app.route('/')
@@ -50,6 +53,8 @@ def process_parameters():
     param2 = request.form.get('param2')
     if get_mdp(param1) :
         result = liste_dosier(chemin)
+        for i in result :
+            chiffrer(chemin, param1)
     else :
         result = "eror mdp"
     return render_template('result.html', result=result)
