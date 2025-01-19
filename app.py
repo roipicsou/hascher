@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
+from hashlib import sha256
 
 app = Flask(__name__)
 chemin = "/media/root/disque_dure1/"
@@ -11,6 +12,14 @@ def liste_dosier(dossier) :
     fichiers = [os.path.join(dossier, fichier) for fichier in fichiers if os.path.isfile(os.path.join(dossier, fichier))]
     
     return fichiers
+
+def get_mdp(mdp) :
+    with open("/media/root/disque_dure/bob.txt", "r") as fichier:
+        hash1 = fichier.read()
+    if sha256(mdp.encode('utf-8')).hexdigest() == hash1 :
+        return True
+    else :
+        return False
 
 # Page principale
 @app.route('/')
@@ -36,7 +45,10 @@ def parameters():
 def process_parameters():
     param1 = request.form.get('param1')
     param2 = request.form.get('param2')
-    result = liste_dosier(chemin)
+    if get_mdp(param1) :
+        result = liste_dosier(chemin)
+    else :
+        result = "eror mdp"
     return render_template('result.html', result=result)
 
 if __name__ == '__main__':
