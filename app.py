@@ -54,7 +54,7 @@ def process_parameters():
     if get_mdp(param1) :
         result = liste_dosier(chemin)
         for i in result :
-            chiffrer(chemin, param1)
+            chiffrer(i, param1)
     else :
         result = "eror mdp"
     return render_template('result.html', result=result)
