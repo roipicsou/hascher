@@ -60,12 +60,13 @@ def parameters():
 def process_parameters():
     param1 = request.form.get('param1')
     param2 = request.form.get('param2')
+    result = liste_dosier(chemin)
     if get_mdp(param1) and param2 == "chyfrée":
-        result = liste_dosier(chemin)
         for i in result :
             chiffrer(i, param1)
     elif get_mdp(param1) and param2 == "dechifréer" :
-        pass
+        for i in result :
+            dechifréer(i, param1)
     else :
         result = "eror mdp"
     return render_template('result.html', result=result)
