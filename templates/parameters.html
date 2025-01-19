@@ -7,10 +7,14 @@
     <h2>Entrer des paramètres</h2>
     <form action="/process_parameters" method="post">
         <label for="param1">Paramètre 1 :</label>
-        <input type="text" id="param1" name="param1" placeholder="Entrez le paramètre 1">
+        <input type="password" id="param1" name="param1" placeholder="password">
         
         <label for="param2">Paramètre 2 :</label>
-        <input type="text" id="param2" name="param2" placeholder="Entrez le paramètre 2">
+        <select name="param2" id="param2">
+            <option value="">--Please choose an option--</option>
+            <option value="chyfrée">chyfrée</option>
+            <option value="dechifréer">dechifréer</option>
+        </select>
         
         <button type="submit">Soumettre</button>
     </form>
