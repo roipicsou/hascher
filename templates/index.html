@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Page principale{% endblock %}
+
+{% block content %}
+<div class="content-center">
+    <h2>Bienvenue sur l'application</h2>
+    <p>Choisissez une action :</p>
+    <div class="button-container">
+        <button onclick="location.href='/action1'">check dosier</button> <br/>
+        <button onclick="location.href='/parameters'">Entrer des paramètres</button>
+    </div>
+</div>
+{% endblock %}

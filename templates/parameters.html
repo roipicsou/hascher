@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Entrer des paramètres{% endblock %}
+
+{% block content %}
+<div class="content-center">
+    <h2>Entrer des paramètres</h2>
+    <form action="/process_parameters" method="post">
+        <label for="param1">Paramètre 1 :</label>
+        <input type="text" id="param1" name="param1" placeholder="Entrez le paramètre 1">
+        
+        <label for="param2">Paramètre 2 :</label>
+        <input type="text" id="param2" name="param2" placeholder="Entrez le paramètre 2">
+        
+        <button type="submit">Soumettre</button>
+    </form>
+</div>
+{% endblock %}
