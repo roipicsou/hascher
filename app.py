@@ -27,6 +27,15 @@ def chiffrer(chemin, mdp) :
     os.system(f"gpg --batch --yes --passphrase {mdp}  --symmetric {chemin}")
     os.system(f"rm {chemin}")
 
+def extracte(fichier) :
+    if '.' in fichier:
+        return '.'.join(fichier.split('.')[:-1])
+    return fichier
+
+def dechifréer(chemin, mdp) :
+    os.system(f"gpg --batch --yes --passphrase {mdp} --decrypt {chemin} > {extracte(chemin)}")
+    os.system(f"rm {chemin}")
+
 # Page principale
 @app.route('/')
 def index():
@@ -51,10 +60,12 @@ def parameters():
 def process_parameters():
     param1 = request.form.get('param1')
     param2 = request.form.get('param2')
-    if get_mdp(param1) :
+    if get_mdp(param1) and param2 == "chyfrée":
         result = liste_dosier(chemin)
         for i in result :
             chiffrer(i, param1)
+    elif get_mdp(param1) and param2 == "dechifréer" :
+        pass
     else :
         result = "eror mdp"
     return render_template('result.html', result=result)
