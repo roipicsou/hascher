@@ -1,7 +1,7 @@
 import os
 import time
 
-time.sleep(0.5)
+time.sleep(2)
 os.system("mkdir /media/root/disque_dure/")
 os.system("sudo mount /dev/sda1 /media/root/disque_dure/")
 os.system("mkdir /media/root/disque_dure1/")
