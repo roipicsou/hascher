@@ -64,9 +64,13 @@ def process_parameters():
     if get_mdp(param1) and param2 == "chyfrée":
         for i in result :
             chiffrer(i, param1)
+        result = "chifréer"
     elif get_mdp(param1) and param2 == "dechifréer" :
         for i in result :
             dechifréer(i, param1)
+        result = "dechifréer"
+    elif get_mdp(param1) and param2 == "r" :
+        result = "entréer une options"
     else :
         result = "eror mdp"
     return render_template('result.html', result=result)
